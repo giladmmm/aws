@@ -1,6 +1,13 @@
 // access key + secret access key
 // lets assume we run the chek every week
-elb = describeloadbalancers()
+ruby -v
+irb,}
+require 'aws-sdk'
+Aws.config.update({
+   credentials: Aws::Credentials.new('your_access_key_id', 'your_secret_access_key')
+})
+elasticloadbalancing = Aws::ElasticLoadBalancing::Client.new(region: 'us-east-1')
+elb = elasticloadbalancing.describe_load_balancers()
 noRequestsElbs={} // arrays of elb names
 onlyHealthChecksElbs={} // arrays of elb names
 elb.each do 
